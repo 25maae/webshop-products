@@ -39,3 +39,9 @@ if (inStock2) {
 `;
   testSection.insertAdjacentHTML("beforeend", html);
 }
+
+if (productPrice > productPrice2) {
+  console.log(`${productTitle} er dyrest og koster ${productPrice} kr`);
+} else {
+  console.log(`${productTitle2} er dyrest og koster ${productPrice2} kr`);
+}
