@@ -8,3 +8,4 @@ document.addEventListener("DOMContentLoaded", initApp);
 function initApp() {
   console.log("App initialized");
 }
+console.log("Vi tester console.log og det er ret nørdet ✨");
