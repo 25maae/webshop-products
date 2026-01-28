@@ -45,3 +45,9 @@ if (productPrice > productPrice2) {
 } else {
   console.log(`${productTitle2} er dyrest og koster ${productPrice2} kr`);
 }
+
+if (inStock) {
+  console.log(`${productTitle} er på lager!`);
+} else {
+  console.log(`${productTitle} er desværre ikke på lager!`);
+}
