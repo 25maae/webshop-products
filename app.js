@@ -8,46 +8,75 @@ document.addEventListener("DOMContentLoaded", initApp);
 function initApp() {
   console.log("App initialized");
 }
-const productTitle = "Fjallraven - Foldsack No. 1 Backpack";
-const productPrice = 849;
-const inStock = true;
-const productTitle2 = "Mens Casual Premium Slim Fit T-Shirts";
-const productPrice2 = 179;
-const inStock2 = false;
 
-if (inStock) {
-  const testSection = document.querySelector("#test");
-  const html = `
-<div>
-  <h3>Test: Produkt information</h3>
-  <p><strong>Titel:</strong>${productTitle}</p>
-  <p><strong>Pris:</strong> ${productPrice} kr</p>
-  <p><strong>På lager:</strong> ${inStock}</p>
-</div>
-`;
-  testSection.insertAdjacentHTML("beforeend", html);
-}
-if (inStock2) {
-  const testSection = document.querySelector("#test");
-  const html = `
-<div>
-  <h3>Test: Produkt information</h3>
-  <p><strong>Titel:</strong>${productTitle2}</p>
-  <p><strong>Pris:</strong> ${productPrice2} kr</p>
-  <p><strong>På lager:</strong> ${inStock2}</p>
-</div>
-`;
-  testSection.insertAdjacentHTML("beforeend", html);
-}
+const product1 = {
+  title: "Fjallraven - Foldsack No. 1 Backpack",
+  price: 849,
+  inStock: true,
+  image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png",
+  description: "Din perfekte pakke til hverdagsbrug og eventyr.",
+  category: "electronics",
+};
+const product2 = {
+  title: "Mens Casual Premium Slim Fit T-Shirts",
+  price: 179,
+  inStock: true,
+  image:
+    "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png",
+  description: "Den mest behagelige t-shirt du nogensinde vil eje.",
+  category: "clothing",
+};
+const product3 = {
+  title: "Mens Cotton Jacket",
+  price: 999,
+  inStock: false,
+  image: "https://fakestoreapi.com/img/71li-ujtlUL._AC_UX679_.jpg",
+  description: "En stilfuld jakke til alle årstider.",
+  category: "clothing",
+};
 
-if (productPrice > productPrice2) {
-  console.log(`${productTitle} er dyrest og koster ${productPrice} kr`);
+let stockText;
+let stockClass;
+if (product1.inStock) {
+  stockText = "På lager";
+  stockClass = "in-stock";
 } else {
-  console.log(`${productTitle2} er dyrest og koster ${productPrice2} kr`);
+  stockText = "Udsolgt";
+  stockClass = "out-of-stock";
 }
 
-if (inStock) {
-  console.log(`${productTitle} er på lager!`);
-} else {
-  console.log(`${productTitle} er desværre ikke på lager!`);
-}
+const html = /*html*/ `
+<article class="product-card">
+<img src="${product1.image}" class="product-image">
+<div class="product-info">
+<h2 class="product-name">${product1.title}</h2>
+<p class="product-description">${product1.description}</p>
+<p class="product-price">${product1.price} kr</p>
+</div>
+</article>
+`;
+document.querySelector("#test").insertAdjacentHTML("beforeend", html);
+
+const html2 = /*html*/ `
+<article class="product-card">
+<img src="${product2.image}" class="product-image">
+<div class="product-info">
+<h2 class="product-name">${product2.title}</h2>
+<p class="product-description">${product2.description}</p>
+<p class="product-price">${product2.price} kr</p>
+</div>
+</article>
+`;
+document.querySelector("#test").insertAdjacentHTML("beforeend", html);
+
+const html3 = /*html*/ `
+<article class="product-card">
+<img src="${product3.image}" class="product-image">
+<div class="product-info">
+<h2 class="product-name">${product3.title}</h2>
+<p class="product-description">${product3.description}</p>
+<p class="product-price">${product3.price} kr</p>
+</div>
+</article>
+`;
+document.querySelector("#test").insertAdjacentHTML("beforeend", html);
