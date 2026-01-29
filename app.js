@@ -2,55 +2,55 @@
 
 // Importer produkter fra data.js
 import { products } from "./data.js";
-import { getExcerpt, getStockStatus } from "./helpers.js";
+import { getExcerpt, getStockStatus, getAllProducts } from "./helpers.js";
 
 // Event listener - starter appen når siden er loaded
 document.addEventListener("DOMContentLoaded", initApp);
 
 // Initialize app
-function initApp() {
-  console.log("App initialized");
-  displayAllProducts();
+async function initApp() {
+  console.log("App initialized 🚀");
+  const products = await getAllProducts();
+  displayAllProducts(products);
 }
 
 // Vis alle produkter
-function displayAllProducts() {
-  // ryd grid
-  document.querySelector("#productGrid").innerHTML = "";
-  // loop gennem products
-  for (const product of products) {
-    // kald displayProduct for hvert produkt
-    displayProduct(product);
-  }
-}
+const displayAllProducts = (products) => {
+  const grid = document.querySelector("#productGrid");
+  grid.innerHTML = products.map(displayProduct).join("");
+};
+
 
 // Vis ét produkt
 function displayProduct(product) {
-  // tjek lagerstatus
-  let stockText; // tekst til lagerstatus
-  let stockClass; // CSS-klasse til lagerstatus
-  if (product.inStock) {
-    // hvis produktet er på lager
-    stockText = "På lager";
-    stockClass = "in-stock";
-  } else {
-    // hvis produktet er udsolgt
-    stockText = "Udsolgt";
-    stockClass = "out-of-stock";
-  }
+  const stock = getStockStatus(product.inStock);
 
-  // lav HTML
-  const html = /*html*/ `
-  <article class="product-card">
-    <img src="${product.image}" class="product-image" />
-    <div class="product-info">
-      <h2 class="product-title">${product.title}</h2>
-      <p class="product-description">${product.description}</p>
-      <p class="product-price">$${product.price}</p>
-      <span class="product-stock ${stockClass}">${stockText}</span>
-    </div>
-  </article>
-  `;
-  // indsæt i DOM
-  document.querySelector("#productGrid").insertAdjacentHTML("beforeend", html);
+  return
+  `<article class="product-card">
+    <a href="product.html?id=${product.id}"><img src="${product.image}" class="product-image" /></a>
+    <h2 class="product-title"><a href="product.html?id=${product.id}">${product.title}</a></h2>
+    <p class="product-description">${getExcerpt(product.description)}</p>
+    <p class="product-price">$${product.price}</p>
+    <p class="product-stock ${stock.class}">${stock.text}</p>
+  </article>`;
 }
+
+// Traditionel
+function add(a, b) {
+  return a + b;
+}
+console.log(add(5, 3));
+
+// Arrow function
+const addArrow = (a, b) => a + b;
+console.log(addArrow(5, 3));
+
+// Traditionel
+function square(x) {
+  return x * x;
+}
+console.log(square(4));
+
+// Arrow function (kort syntaks)
+const squareArrow = (x) => x * x; // Parenteser kan droppes ved ét parameter
+console.log(squareArrow(4));
