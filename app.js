@@ -245,8 +245,7 @@ function displayProduct(product) {
     <img src="${product.image}" class="product-image" />
     <div class="product-info">
       <h2 class="product-title">${product.title}</h2>
-      <p class="product-description">
-        ${product.description}
+     <p class="product-description">${product.description}</p>
       </p>
       <p class="product-price">$${product.price}</p>
       <span class="product-stock ${stockClass}">${stockText}</span>
@@ -255,4 +254,12 @@ function displayProduct(product) {
   `;
   // indsæt i DOM
   document.querySelector("#productGrid").insertAdjacentHTML("beforeend", html);
+}
+
+const testProduct = products[0];
+const excerpt = testProduct.description.substring(0, 100);
+
+function getExcerpt(text) {
+  const excerpt = text.substring(0, 100) + "...";
+  console.log(excerpt);
 }
