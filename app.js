@@ -1,7 +1,6 @@
 "use strict";
 
-// Importer produkter fra data.js
-import { products } from "./data.js";
+// import { products } from "./data.js";
 import { getExcerpt, getStockStatus, getAllProducts } from "./helpers.js";
 
 // Event listener - starter appen når siden er loaded
