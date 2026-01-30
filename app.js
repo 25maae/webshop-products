@@ -20,13 +20,12 @@ const displayAllProducts = (products) => {
   grid.innerHTML = products.map(displayProduct).join("");
 };
 
-
 // Vis ét produkt
 function displayProduct(product) {
   const stock = getStockStatus(product.inStock);
 
-  return
-  `<article class="product-card">
+  return `
+  <article class="product-card">
     <a href="product.html?id=${product.id}"><img src="${product.image}" class="product-image" /></a>
     <h2 class="product-title"><a href="product.html?id=${product.id}">${product.title}</a></h2>
     <p class="product-description">${getExcerpt(product.description)}</p>
