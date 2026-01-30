@@ -1,4 +1,4 @@
-import { getAllProducts } from "./helpers.js";
+import { getAllProducts, getStockStatus } from "./helpers.js";
 
 document.addEventListener("DOMContentLoaded", initProduct);
 
